@@ -1,20 +1,37 @@
 import React, { useState } from "react";
+import ContactList from "./ContactList";
 
 const Contacts = () => {
+  const [contacts, setContacts] = useState([]);
   const [contact, setContact] = useState({
     name: "",
     lastName: "",
     email: "",
     phone: "",
   });
+
+  const [alert, setAlert] = useState("");
+
   const contactHandler = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setContact((prevContact) => ({ ...prevContact, [name]: value }));
   };
   const addHandler = () => {
-    console.log(ConstantSourceNode)
+    if (!contact.name || !contact.email || !contact.phone || contact.lastName) {
+      setAlert("Please enter a valid data");
+      return;
+    }
+    setContacts((contacts) => [...contacts, contact]);
+    setContact({
+      name: "",
+      lastName: "",
+      email: "",
+      phone: "",
+    });
+    setAlert("");
   };
+  console.log(contacts);
 
   return (
     <div>
@@ -42,7 +59,9 @@ const Contacts = () => {
         type="number"
         onChange={contactHandler}
       />
-      <button>Add Contact</button>
+      <button onClick={addHandler}>Add Contact</button>
+      <div>{!alert && <p>{alert}</p>}</div>
+      <ContactList contacts={contacts} />
     </div>
   );
 };
