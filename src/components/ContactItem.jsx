@@ -1,6 +1,6 @@
 import React from "react";
 
-const ContactItem = ({ contact }) => {
+const ContactItem = ({ contact, onDeleteItem }) => {
   return (
     <div>
       <li key={contact.id}>
@@ -15,10 +15,11 @@ const ContactItem = ({ contact }) => {
           <span>📱</span>
           {contact.phone}
         </p>
-        <button>❌</button>
+        <button onClick={() => onDeleteItem(contact.id)}>❌</button>
       </li>
     </div>
   );
 };
 
 export default ContactItem;
+ 
