@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Header from "./components/Header";
+
 import "./global.css";
+import Contacts from "./components/Contacts";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -8,6 +10,7 @@ function App() {
   return (
     <>
       <Header />
+      <Contacts />
     </>
   );
 }
