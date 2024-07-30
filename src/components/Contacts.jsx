@@ -24,7 +24,12 @@ const Contacts = () => {
     setContact((prevContact) => ({ ...prevContact, [name]: value }));
   };
   const addHandler = () => {
-    if (!contact.name || !contact.email || !contact.phone || contact.lastName) {
+    if (
+      !contact.name ||
+      !contact.email ||
+      !contact.phone ||
+      !contact.lastName
+    ) {
       setAlert("Please enter a valid data");
       return;
     }
